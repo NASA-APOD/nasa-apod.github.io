@@ -14,7 +14,8 @@ const initialState = {
   date: date,
   mediaType: '',
   explanation: '',
-  title: ''
+  title: '',
+  count: 0
 };
 
 export default function(state = initialState, action) {
@@ -29,7 +30,8 @@ export default function(state = initialState, action) {
         image: action.payload.url,
         mediaType: action.payload.media_type,
         explanation: action.payload.explanation,
-        title: action.payload.title
+        title: action.payload.title,
+        count: action.payload.count
       };
     case FETCH_IMAGE_ERROR: 
       return { ...state, loading: false, error: action.payload };

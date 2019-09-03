@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import DateForm from '../components/DateForm';
-import { getDate, getImage, getMediaType, getTitle, getExplanation } from '../selectors/imageSelector';
+import { getDate, getImage, getMediaType, getTitle, getExplanation, getCount } from '../selectors/imageSelector';
 import { updateDate, fetchImage } from '../actions/imageActions';
 import SelectedDate from '../components/SelectedDate';
 import MediaDisplay from '../components/MediaDisplay';
+import CountDisplay from '../components/CountDisplay';
 
 class ImageViewer extends React.Component {
   static propTypes = {
@@ -15,7 +16,8 @@ class ImageViewer extends React.Component {
     image: PropTypes.string.isRequied,
     mediaType: PropTypes.string.isRequied,
     explanation: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    count: PropTypes.number.isRequired
   }
 
   componentDidMount() {
@@ -28,11 +30,12 @@ class ImageViewer extends React.Component {
   }
   
   render() {
-    const { date, updateDate, image, mediaType, explanation, title } = this.props;
+    const { date, updateDate, image, mediaType, explanation, title, count } = this.props;
     return (
       <>
         <DateForm date={date} handleUpdate={updateDate} handleSubmit={this.handleSubmit} />
         <SelectedDate date={date} />
+        <CountDisplay count={count} />
         <MediaDisplay 
           media={image} 
           mediaType={mediaType} 
@@ -49,7 +52,8 @@ const mapStateToProps = state => ({
   image: getImage(state),
   mediaType: getMediaType(state),
   title: getTitle(state),
-  explanation: getExplanation(state)
+  explanation: getExplanation(state),
+  count: getCount(state)
 });
 
 const mapDispatchToProps = dispatch => ({
