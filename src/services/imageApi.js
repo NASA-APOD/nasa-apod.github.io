@@ -1,5 +1,5 @@
 export const getImage = (date) => {
-  return fetch('http://api-nasa-apod.herokuapp.com/api/v1/apod', {
+  return fetch('https://api-nasa-apod.herokuapp.com/api/v1/apod', {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
