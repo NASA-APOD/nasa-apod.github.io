@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import DateForm from '../components/DateForm';
 import { getDate } from '../selectors/imageSelector';
 import { updateDate } from '../actions/imageActions';
+import SelectedDate from '../components/SelectedDate';
 
 class ImageViewer extends React.Component {
   static propTypes = {
@@ -14,7 +15,10 @@ class ImageViewer extends React.Component {
   render() {
     const { date, updateDate } = this.props;
     return (
-      <DateForm date={date} handleUpdate={updateDate} />
+      <>
+        <DateForm date={date} handleUpdate={updateDate} />
+        <SelectedDate date={date} />
+      </>
     );
   }
 }
