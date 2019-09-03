@@ -2,5 +2,10 @@ import React from 'react';
 import ImageViewer from '../containers/ImageViewer';
 
 export default function App() {
-  return <ImageViewer />;
+  return (
+    <>
+      <h1>NASA Astronomy Picture of the Day</h1>
+      <ImageViewer />
+    </>
+  );
 }
